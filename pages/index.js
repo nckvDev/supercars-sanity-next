@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { createClient } from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url'
-import { Button, Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from '@mui/material'
+import { Box, Button, Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from '@mui/material'
 import { Container } from '@mui/system'
 import React from 'react'
 
@@ -29,31 +29,33 @@ export default function Home({ supercars }) {
 
       <Container maxWidth='lg'>
         {supercars.length > 0 && (
-          <Grid container spacing={2}>
-            <React.Fragment>
-              {supercars.map(supercar => (
-                <Grid item={true} xs={12} md={6} lg={4} key={supercar._id}>
-                  <Card>
-                    <Link href={`/supercars/${supercar._id}`}>
-                      <CardActionArea>
-                        <CardMedia
-                          component='img'
-                          height='250'
-                          image={urlFor(supercar.images).url()}
-                          alt='green iguana'
-                        />
-                        <CardContent>
-                          <Typography gutterBottom={false} variant='h5' component='div' align='center'>
-                            {supercar?.name}
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                    </Link>
-                  </Card>
-                </Grid>
-              ))}
-            </React.Fragment>
-          </Grid>
+          <Box sx={{ mb: 4 }}>
+            <Grid container spacing={2}>
+              <React.Fragment>
+                {supercars.map(supercar => (
+                  <Grid item={true} xs={12} md={6} lg={4} key={supercar._id}>
+                    <Card>
+                      <Link href={`/supercars/${supercar._id}`}>
+                        <CardActionArea>
+                          <CardMedia
+                            component='img'
+                            height='250'
+                            image={urlFor(supercar.images).url()}
+                            alt='green iguana'
+                          />
+                          <CardContent>
+                            <Typography gutterBottom={false} variant='h5' component='div' align='center'>
+                              {supercar?.name}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Link>
+                    </Card>
+                  </Grid>
+                ))}
+              </React.Fragment>
+            </Grid>
+          </Box>
         )}
       </Container>
     </>
