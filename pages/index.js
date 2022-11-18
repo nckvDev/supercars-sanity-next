@@ -8,6 +8,7 @@ import imageUrlBuilder from '@sanity/image-url'
 import { Box, Button, Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from '@mui/material'
 import { Container } from '@mui/system'
 import React from 'react'
+import { Header } from '../components/Header'
 
 export default function Home({ supercars }) {
   return (
@@ -18,18 +19,10 @@ export default function Home({ supercars }) {
         <meta name='viewport' content='initial-scale=1, width=device-width' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Typography
-        gutterBottom={true}
-        variant='h1'
-        align='center'
-        sx={{ marginTop: 2, fontWeight: 400, letterSpacing: 2 }}
-      >
-        Supercars
-      </Typography>
-
+      <Header />
       <Container maxWidth='lg'>
-        {supercars.length > 0 && (
-          <Box sx={{ mb: 4 }}>
+        <Box sx={{ my: 2 }}>
+          {supercars.length > 0 && (
             <Grid container spacing={2}>
               <React.Fragment>
                 {supercars.map(supercar => (
@@ -55,8 +48,8 @@ export default function Home({ supercars }) {
                 ))}
               </React.Fragment>
             </Grid>
-          </Box>
-        )}
+          )}
+        </Box>
       </Container>
     </>
   )
